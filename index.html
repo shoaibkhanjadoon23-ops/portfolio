@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shoaib Khan — WordPress Developer & Digital Marketer</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+
+<!-- ============================================================
+  IMAGES CONFIG — Change your images here!
+  Just replace the file paths below with your new image paths.
+  You can use:
+    - Local paths:  "images/ku-apparel/home.jpg"
+    - URLs:         "https://yoursite.com/screenshot.jpg"
+============================================================ -->
+<script>
+const IMAGES = {
+  // Your profile photo
+  profile:        "images/profile.jpg",
+
+  // Ku-Apparel E-commerce Store
+  ka_home:        "images/ku-apparel/home.jpg",
+  ka_shop:        "images/ku-apparel/shop.jpg",
+  ka_track:       "images/ku-apparel/track.jpg",
+  ka_contact:     "images/ku-apparel/contact.jpg",
+  ka_hello:       "images/ku-apparel/hello.png",
+
+  // IntelliCampus AI Chatbot
+  ic_landing:     "images/intellicampus/Home (1).png",
+  ic_chat:        "images/intellicampus/chat.png",
+  ic_screen:      "images/intellicampus/Screen.png",
+
+  // NS-Holding Corporate Website
+  ns_home:        "images/ns-holding/home.jpg",
+  ns_about:       "images/ns-holding/about.jpg",
+  ns_services:    "images/ns-holding/services.jpg",
+  ns_ai:          "images/ns-holding/ai.jpg",
+  ns_contact:     "images/ns-holding/contact.jpg",
+
+  // Codearva Digital Marketing Agency
+  ca_home:        "images/codearva/home.jpg",
+  ca_about:       "images/codearva/about.jpg",
+  ca_services:    "images/codearva/services.jpg",
+  ca_meeting:     "images/codearva/meeting.jpg",
+  ca_contact:     "images/codearva/contact.jpg",
+};
+</script>
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#070709;--bg2:#0e0e12;--bg3:#141418;--surface:#1c1c22;
+  --border:rgba(255,255,255,0.07);--border-h:rgba(255,255,255,0.15);
+  --text:#ededef;--muted:#888;--dim:#505050;
+  --accent:#d4ff47;--purple:#8b5cf6;--cyan:#22d3ee;
+  --fh:'Syne',sans-serif;--fb:'DM Sans',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--fb);overflow-x:hidden;cursor:none}
+.cursor{position:fixed;width:10px;height:10px;background:var(--accent);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .25s,height .25s;mix-blend-mode:difference}
+.cursor-ring{position:fixed;width:36px;height:36px;border:1.5px solid rgba(212,255,71,.4);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:left .1s ease-out,top .1s ease-out,width .3s,height .3s}
+.cursor.big{width:20px;height:20px}.cursor-ring.big{width:58px;height:58px;border-color:rgba(212,255,71,.15)}
+.progress{position:fixed;top:0;left:0;height:2px;background:var(--accent);z-index:600;transition:width .1s linear;pointer-events:none}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:0 3rem;height:68px;display:flex;align-items:center;justify-content:space-between;background:rgba(7,7,9,.82);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:height .3s}
+nav.scrolled{height:56px}
+.logo{font-family:var(--fh);font-size:1.1rem;font-weight:800;letter-spacing:-.02em;color:var(--text);text-decoration:none}
+.logo em{color:var(--accent);font-style:normal}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.78rem;font-weight:400;letter-spacing:.07em;text-transform:uppercase;transition:color .2s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1px;background:var(--accent);transition:width .3s}
+.nav-links a:hover{color:var(--text)}.nav-links a:hover::after{width:100%}
+.nav-cta{background:var(--accent);color:#070709;padding:.48rem 1.35rem;border-radius:100px;font-family:var(--fh);font-weight:700;font-size:.78rem;text-decoration:none;transition:all .2s}
+.nav-cta:hover{opacity:.85;transform:translateY(-1px)}
+
+/* HERO */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 400px;gap:4rem;align-items:center;padding:9rem 3rem 5rem;max-width:1280px;margin:0 auto}
+.hero-blob{position:fixed;width:700px;height:700px;background:radial-gradient(circle,rgba(212,255,71,.045) 0%,transparent 70%);top:-150px;left:-150px;pointer-events:none;animation:blob1 9s ease-in-out infinite alternate}
+.hero-blob2{position:fixed;width:550px;height:550px;background:radial-gradient(circle,rgba(139,92,246,.06) 0%,transparent 70%);bottom:-50px;right:5%;pointer-events:none;animation:blob1 11s ease-in-out infinite alternate-reverse}
+@keyframes blob1{0%{transform:translate(0,0) scale(1)}100%{transform:translate(60px,50px) scale(1.08)}}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(212,255,71,.06);border:1px solid rgba(212,255,71,.18);color:var(--accent);padding:.38rem 1rem;border-radius:100px;font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-bottom:1.6rem}
+.bdot{width:6px;height:6px;background:var(--accent);border-radius:50%;animation:bdot 2s infinite}
+@keyframes bdot{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(212,255,71,.5)}50%{opacity:.6;box-shadow:0 0 0 6px rgba(212,255,71,0)}}
+h1.htitle{font-family:var(--fh);font-size:clamp(3.8rem,6.5vw,6rem);font-weight:800;line-height:.95;letter-spacing:-.04em;margin-bottom:1.6rem}
+h1.htitle .n1{display:block;color:var(--text)}
+h1.htitle .n2{display:block;color:var(--dim);-webkit-text-stroke:1px var(--dim)}
+h1.htitle .ad{color:var(--accent)}
+.hdesc{font-size:.95rem;color:var(--muted);max-width:460px;line-height:1.78;margin-bottom:2.2rem;font-weight:300}
+.hbtns{display:flex;gap:.9rem;margin-bottom:3.2rem;flex-wrap:wrap}
+.bp{background:var(--accent);color:#070709;padding:.88rem 2.2rem;border-radius:100px;font-family:var(--fh);font-weight:700;font-size:.85rem;text-decoration:none;transition:all .25s;display:inline-flex;align-items:center;gap:.4rem}
+.bp:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(212,255,71,.22)}
+.bs{background:transparent;color:var(--text);padding:.88rem 2.2rem;border-radius:100px;border:1px solid var(--border-h);font-family:var(--fh);font-weight:500;font-size:.85rem;text-decoration:none;transition:all .25s}
+.bs:hover{background:var(--surface)}
+.hstats{display:flex;gap:2.5rem;padding-top:2.2rem;border-top:1px solid var(--border)}
+.sn{font-family:var(--fh);font-size:2rem;font-weight:800;letter-spacing:-.04em;line-height:1}
+.sn em{color:var(--accent);font-style:normal}
+.sl{font-size:.68rem;color:var(--dim);text-transform:uppercase;letter-spacing:.1em;margin-top:3px}
+
+/* PROFILE CARD */
+.pfc{background:var(--bg2);border:1px solid var(--border);border-radius:24px;overflow:hidden}
+.pfc-img{position:relative;overflow:hidden}
+.pfc-img img{width:100%;display:block;object-fit:cover;object-position:top center;transition:transform .5s ease;height:360px}
+.pfc:hover .pfc-img img{transform:scale(1.04)}
+.pfc-fade{position:absolute;bottom:0;left:0;right:0;height:50%;background:linear-gradient(to top,var(--bg2),transparent)}
+.pfc-meta{padding:1.4rem 1.6rem}
+.pfc-name{font-family:var(--fh);font-size:1.05rem;font-weight:800;letter-spacing:-.02em;margin-bottom:.2rem}
+.pfc-role{font-size:.75rem;color:var(--muted);margin-bottom:.85rem}
+.chips{display:flex;flex-wrap:wrap;gap:.35rem}
+.chip{font-size:.65rem;padding:.22rem .7rem;border-radius:100px;background:var(--surface);border:1px solid var(--border);color:var(--muted)}
+.chip.on{background:rgba(212,255,71,.07);border-color:rgba(212,255,71,.2);color:var(--accent)}
+
+/* MARQUEE */
+.mq{padding:1.35rem 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow:hidden;background:var(--bg2)}
+.mq-t{display:flex;gap:3rem;animation:mq 28s linear infinite;width:max-content}
+.mq-i{display:flex;align-items:center;gap:.65rem;font-family:var(--fh);font-size:.7rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);white-space:nowrap}
+.mq-i em{color:var(--accent);font-style:normal;font-size:.85rem}
+@keyframes mq{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* SECTION */
+section{padding:7rem 0;width:100%;box-sizing:border-box}
+.wrap{max-width:1440px;margin: auto;width:100%;padding-left: 7.1rem;padding-right: 6rem}
+.slabel{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);font-weight:600;font-family:var(--fh);margin-bottom:.5rem}
+.stitle{font-family:var(--fh);font-size:clamp(2rem,3.5vw,3rem);font-weight:800;letter-spacing:-.04em;line-height:1.05;margin-bottom:.7rem}
+.stitle .dim{color:var(--dim)}
+.ssub{color:var(--muted);max-width:460px;line-height:1.75;font-size:.9rem}
+
+/* PROJECTS */
+#projects{background:var(--bg)}
+.ptop{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:1.5rem}
+.big-num{font-family:var(--fh);font-size:5rem;font-weight:800;color:var(--surface);letter-spacing:-.05em;line-height:1}
+
+/* SKILL TABS */
+.skill-tabs{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:3rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border)}
+.stab{background:transparent;border:1px solid var(--border);color:var(--muted);padding:.45rem 1.1rem;border-radius:100px;font-family:var(--fh);font-size:.72rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;transition:all .25s}
+.stab:hover{border-color:var(--border-h);color:var(--text)}
+.stab.active{background:var(--accent);border-color:var(--accent);color:#070709}
+
+/* PROJECT GROUPS */
+.proj-group{display:none}
+.proj-group.show{display:block}
+.group-title{font-family:var(--fh);font-size:.7rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--dim);margin-bottom:1.5rem}
+
+/* PROJECT CARDS */
+.pcard{background:var(--bg2);border:1px solid var(--border);border-radius:22px;overflow:hidden;transition:border-color .35s,transform .35s;margin-bottom:1.5rem}
+.pcard:hover{border-color:var(--border-h);transform:translateY(-4px)}
+.pcard-feat{display:grid;grid-template-columns:52% 48%}
+
+/* BANNER */
+.pcard-banner{position:relative;overflow:hidden;cursor:pointer}
+.banner-img{width:100%;display:block;object-fit:cover;object-position:top;transition:transform .5s ease}
+.pcard-banner:hover .banner-img{transform:scale(1.03)}
+.banner-fade{position:absolute;bottom:0;left:0;right:0;height:60%;background:linear-gradient(to top,var(--bg2) 0%,transparent 100%);pointer-events:none}
+.banner-side-fade{position:absolute;inset:0;background:linear-gradient(to right,transparent 50%,var(--bg2) 100%);pointer-events:none}
+.view-all-btn{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);background:rgba(7,7,9,.78);border:1px solid var(--border-h);color:var(--text);padding:.45rem 1.1rem;border-radius:100px;font-family:var(--fh);font-size:.68rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;backdrop-filter:blur(8px);transition:all .2s;white-space:nowrap}
+.view-all-btn:hover{background:var(--accent);color:#070709;border-color:var(--accent)}
+.pcard-feat .view-all-btn{left:auto;right:14px;transform:none}
+.pcard-feat .banner-fade{display:none}
+
+/* CARD INFO */
+.pcard-info{padding:2.2rem;display:flex;flex-direction:column;justify-content:center}
+.card-tags{display:flex;flex-wrap:wrap;gap:.35rem;margin-bottom:1rem}
+.ctag{font-size:.65rem;font-weight:600;padding:.25rem .75rem;border-radius:100px;letter-spacing:.06em;text-transform:uppercase}
+.cw{background:rgba(33,117,155,.1);color:#67c8f5;border:1px solid rgba(103,200,245,.15)}
+.ca2{background:rgba(139,92,246,.1);color:#a78bfa;border:1px solid rgba(167,139,250,.15)}
+.ce{background:rgba(16,185,129,.1);color:#34d399;border:1px solid rgba(52,211,153,.15)}
+.cd{background:rgba(245,158,11,.1);color:#fbbf24;border:1px solid rgba(251,191,36,.15)}
+.cr{background:rgba(34,211,238,.1);color:#22d3ee;border:1px solid rgba(34,211,238,.15)}
+.pnum{font-family:var(--fh);font-size:.65rem;color:var(--dim);letter-spacing:.14em;text-transform:uppercase;margin-bottom:.3rem}
+.pname{font-family:var(--fh);font-size:1.7rem;font-weight:800;letter-spacing:-.03em;line-height:1.1;margin-bottom:.25rem}
+.pfor{font-size:.72rem;color:var(--accent);font-weight:500;letter-spacing:.07em;text-transform:uppercase;margin-bottom:.9rem}
+.pdesc{color:#666;font-size:.855rem;line-height:1.75;margin-bottom:1rem}
+.tpills{display:flex;flex-wrap:wrap;gap:.3rem;margin-bottom:1.4rem}
+.tp{font-size:.68rem;color:var(--dim);background:var(--surface);border:1px solid var(--border);padding:.2rem .6rem;border-radius:100px}
+.arrow-btn{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--fh);font-size:.78rem;font-weight:600;color:var(--muted);background:none;border:none;cursor:pointer;padding:0;transition:color .2s,gap .2s}
+.pcard:hover .arrow-btn{color:var(--accent);gap:.8rem}
+
+/* GRID */
+.pgrid{display:grid;grid-template-columns:repeat(2,minmax(550px,1fr));gap:2.0rem;align-items:stretch;width:100%;box-sizing:border-box}
+.pgrid .pcard{width:100%}
+.pgrid .pcard{display:flex;flex-direction:column;height:100%}
+.pgrid .pcard-info{flex:1;display:flex;flex-direction:column;justify-content:space-between;min-height:280px}
+.pcard-sm .pcard-banner{height:280px;overflow:hidden}
+.pcard-sm .banner-img{width:100%;height:100%;object-fit:cover;object-position:top center}
+.pcard-sm .pcard-info{padding:1.6rem 1.8rem}
+.pcard-sm .pname{font-size:1.25rem}
+
+/* EMPTY */
+.empty-skill{padding:3rem;text-align:center;background:var(--bg2);border:1px dashed var(--border);border-radius:20px;color:var(--dim);font-size:.85rem;font-family:var(--fh)}
+.empty-skill strong{display:block;font-size:1.1rem;margin-bottom:.5rem;color:var(--surface)}
+
+/* ABOUT */
+#about{background:var(--bg2)}
+.about-layout{display:grid;grid-template-columns:360px 1fr;gap:5rem;align-items:center}
+.about-pic-wrap{position:relative;display:flex;justify-content:center}
+.about-pic{width:300px;height:300px;border-radius:50%;overflow:hidden;border:3px solid var(--border)}
+.about-pic img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
+.about-badge{position:absolute;bottom:16px;right:16px;background:var(--accent);color:#070709;padding:.75rem 1.2rem;border-radius:14px;font-family:var(--fh);font-weight:800;text-align:center}
+.ab-big{font-size:1.8rem;line-height:1;display:block}
+.ab-sm{font-size:.6rem;letter-spacing:.06em;text-transform:uppercase}
+
+/* SKILLS */
+#skills{background:var(--bg)}
+.sk-layout{display:grid;grid-template-columns:1fr 1.45fr;gap:5rem;align-items:start}
+.sk-grid{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
+.skc{background:var(--bg2);border:1px solid var(--border);border-radius:15px;padding:1.3rem;transition:border-color .3s,transform .3s;position:relative;overflow:hidden}
+.skc::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--accent);transform:scaleX(0);transition:transform .35s;transform-origin:left}
+.skc:hover{border-color:var(--border-h);transform:translateY(-3px)}.skc:hover::before{transform:scaleX(1)}
+.sk-icon{width:36px;height:36px;background:rgba(212,255,71,.06);border:1px solid rgba(212,255,71,.1);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:.95rem;margin-bottom:.8rem}
+.sk-n{font-family:var(--fh);font-size:.85rem;font-weight:700;margin-bottom:.28rem}
+.sk-d{font-size:.72rem;color:var(--dim);line-height:1.6}
+
+/* EXPERIENCE */
+#experience{background:var(--bg2)}
+.exp-layout{display:grid;grid-template-columns:320px 1fr;gap:5rem;align-items:start}
+.exp-list{display:flex;flex-direction:column}
+.exp-item{display:grid;grid-template-columns:145px 1fr;gap:1.5rem;padding:1.7rem 0;border-bottom:1px solid var(--border)}
+.exp-item:last-child{border-bottom:none}
+.exp-date{font-size:.72rem;color:var(--dim);padding-top:2px;line-height:1.6}
+.exp-role{font-family:var(--fh);font-size:.9rem;font-weight:700;margin-bottom:.15rem}
+.exp-co{font-size:.75rem;color:var(--accent);font-weight:500;margin-bottom:.35rem}
+.exp-d{font-size:.78rem;color:var(--muted);line-height:1.7}
+
+/* CONTACT */
+#contact{background:var(--bg)}
+.contact-layout{display:grid;grid-template-columns:1fr 1.1fr;gap:5rem;align-items:start}
+.clinks{display:flex;flex-direction:column;gap:.8rem;margin-top:1.8rem}
+.cl{display:flex;align-items:center;gap:.9rem;padding:1rem 1.3rem;background:var(--bg2);border:1px solid var(--border);border-radius:13px;text-decoration:none;transition:all .25s}
+.cl:hover{border-color:var(--border-h);background:var(--surface);transform:translateX(4px)}
+.cl-ic{width:34px;height:34px;background:rgba(212,255,71,.06);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0}
+.cl-lb{font-size:.65rem;color:var(--dim);text-transform:uppercase;letter-spacing:.08em}
+.cl-vl{font-size:.82rem;color:var(--text);font-weight:500}
+.cform-wrap{background:var(--bg2);border:1px solid var(--border);border-radius:20px;padding:2.2rem}
+.cft{font-family:var(--fh);font-size:1.05rem;font-weight:800;letter-spacing:-.02em;margin-bottom:1.3rem}
+.cform{display:flex;flex-direction:column;gap:.9rem}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
+.fg{display:flex;flex-direction:column;gap:.3rem}
+.fl{font-size:.65rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+.fi,.fta{background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:.75rem .95rem;border-radius:9px;font-family:var(--fb);font-size:.85rem;transition:border-color .2s;outline:none;width:100%}
+.fi:focus,.fta:focus{border-color:rgba(212,255,71,.38)}
+.fta{resize:none;height:115px}
+.fsub{background:var(--accent);color:#070709;border:none;padding:.82rem 1.9rem;border-radius:100px;font-family:var(--fh);font-weight:700;font-size:.82rem;cursor:pointer;transition:all .25s;align-self:flex-start}
+.fsub:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(212,255,71,.18)}
+
+footer{padding:1.8rem 3rem;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;background:var(--bg2)}
+.fc{font-size:.72rem;color:var(--dim)}.fc em{color:var(--accent);font-style:normal}
+
+/* LIGHTBOX */
+.lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,.93);z-index:2000;align-items:center;justify-content:center;backdrop-filter:blur(14px)}
+.lb.open{display:flex}
+.lb-inner{max-width:860px;width:92%;position:relative}
+.lb-img{width:100%;max-height:82vh;object-fit:contain;object-position:top;border-radius:14px;border:1px solid var(--border);display:block}
+.lb-close{position:absolute;top:-14px;right:-14px;width:34px;height:34px;background:var(--accent);color:#070709;border:none;border-radius:50%;font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;font-weight:800;z-index:10}
+.lb-nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(14,14,18,.85);border:none;color:var(--text);width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.1rem;transition:background .2s}
+.lb-nav:hover{background:var(--surface)}
+.lb-prev{left:-52px}.lb-next{right:-52px}
+.lb-cap{text-align:center;margin-top:.9rem;color:var(--muted);font-size:.8rem;line-height:1.5;min-height:2rem}
+.lb-dots{display:flex;gap:5px;justify-content:center;margin-top:.6rem}
+.lbd{width:5px;height:5px;border-radius:50%;background:var(--dim);cursor:pointer;transition:all .2s}
+.lbd.on{background:var(--accent);transform:scale(1.4)}
+.lb-counter{position:absolute;top:-34px;left:0;font-size:.72rem;color:var(--muted);font-family:var(--fh);letter-spacing:.1em}
+
+/* REVEAL */
+.rv{opacity:0;transform:translateY(36px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+.rv.in{opacity:1;transform:none}
+.rv.d1{transition-delay:.1s}.rv.d2{transition-delay:.2s}.rv.d3{transition-delay:.3s}
+
+@media(max-width:1024px){
+  @media(hover:none){
+  .cursor,.cursor-ring{display:none}
+  body{cursor:auto}
+}
+
+/* ── TABLET (max 1024px) ── */
+@media(max-width:1024px){
+  nav{padding:0 1.5rem}
+  .nav-links{display:none}
+
+  .hero{grid-template-columns:1fr;padding:8rem 1.5rem 4rem;gap:2.5rem}
+  .hero-blob,.hero-blob2{width:300px;height:300px}
+  .pfc{display:grid;grid-template-columns:160px 1fr}
+  .pfc-img img{height:160px}
+  .pfc-fade{height:30%}
+
+  .wrap{padding-left:2rem;padding-right:2rem}
+  section{padding:5rem 0}
+
+  .pgrid{grid-template-columns:1fr 1fr;gap:1.2rem}
+  .pcard-sm .pcard-banner{height:220px}
+
+  .pcard-feat{grid-template-columns:1fr}
+  .pcard-feat .banner-side-fade{display:none}
+  .pcard-feat .banner-fade{display:block !important}
+  .pcard-feat .view-all-btn{left:50%;right:auto;transform:translateX(-50%)}
+
+  .about-layout{grid-template-columns:1fr;gap:3rem}
+  .about-pic-wrap{margin-bottom:2rem}
+  .about-pic{width:240px;height:240px}
+
+  .sk-layout{grid-template-columns:1fr;gap:3rem}
+  .sk-grid{grid-template-columns:1fr 1fr}
+
+  .exp-layout{grid-template-columns:1fr;gap:2rem}
+  .exp-item{grid-template-columns:120px 1fr;gap:1rem}
+
+  .contact-layout{grid-template-columns:1fr;gap:2.5rem}
+  .frow{grid-template-columns:1fr 1fr}
+
+  footer{flex-direction:column;gap:.5rem;text-align:center;padding:1.5rem}
+
+  .lb-prev{left:-10px}
+  .lb-next{right:-10px}
+  .lb-inner{width:95%}
+}
+
+/* ── MOBILE (max 640px) ── */
+@media(max-width:640px){
+  nav{padding:0 1.2rem;height:60px}
+  .nav-cta{padding:.4rem 1rem;font-size:.72rem}
+
+  .hero{padding:7rem 1.2rem 3rem;gap:2rem}
+  h1.htitle{font-size:clamp(2.8rem,12vw,4rem)}
+  .hdesc{font-size:.88rem}
+  .hbtns{flex-direction:column;gap:.7rem}
+  .bp,.bs{text-align:center;justify-content:center;padding:.8rem 1.5rem}
+  .hstats{gap:1.2rem;flex-wrap:wrap}
+  .sn{font-size:1.5rem}
+
+  .pfc{display:block}
+  .pfc-img img{height:260px}
+
+  .wrap{padding-left:1.2rem;padding-right:1.2rem}
+  section{padding:4rem 0}
+
+  .pgrid{grid-template-columns:1fr;gap:1.2rem}
+  .pcard-sm .pcard-banner{height:200px}
+  .pgrid .pcard-info{min-height:auto}
+
+  .skill-tabs{gap:.4rem}
+  .stab{padding:.38rem .85rem;font-size:.65rem}
+
+  .ptop{flex-direction:column;align-items:flex-start;gap:.5rem}
+  .big-num{font-size:3rem}
+
+  .about-layout{gap:2rem}
+  .about-pic{width:200px;height:200px}
+  .about-badge{bottom:8px;right:8px;padding:.6rem .9rem}
+  .ab-big{font-size:1.4rem}
+
+  .sk-grid{grid-template-columns:1fr 1fr;gap:.7rem}
+  .skc{padding:1rem}
+
+  .exp-layout{gap:1.5rem}
+  .exp-item{grid-template-columns:1fr;gap:.15rem;padding:1.2rem 0}
+  .exp-date{font-size:.68rem}
+
+  .contact-layout{gap:2rem}
+  .frow{grid-template-columns:1fr}
+  .cform-wrap{padding:1.5rem}
+
+  .stitle{font-size:clamp(1.6rem,6vw,2.2rem)}
+
+  .lb-inner{width:98%}
+  .lb-prev{left:-8px}
+  .lb-next{right:-8px}
+  .lb-cap{font-size:.72rem}
+
+  footer{padding:1.2rem 1.5rem}
+}
+
+/* ── SMALL MOBILE (max 400px) ── */
+@media(max-width:400px){
+  .hero{padding:6.5rem 1rem 3rem}
+  .wrap{padding-left:1rem;padding-right:1rem}
+  h1.htitle{font-size:clamp(2.4rem,11vw,3rem)}
+  .sk-grid{grid-template-columns:1fr}
+  .hstats{gap:1rem}
+  .pgrid{grid-template-columns:1fr}
+  .stab{padding:.32rem .7rem;font-size:.62rem}
+}
+}
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cur"></div>
+<div class="cursor-ring" id="curR"></div>
+<div class="progress" id="prog"></div>
+
+<nav id="nav">
+  <a href="#" class="logo">Shoaib<em>.</em></a>
+  <ul class="nav-links">
+    <li><a href="#projects">Work</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="mailto:shoaiibkhanjadoonn@gmail.com" class="nav-cta">Hire Me ↗</a>
+</nav>
+
+<div style="position:relative;overflow:hidden;z-index:1">
+  <div class="hero-blob"></div><div class="hero-blob2"></div>
+  <div class="hero" style="position:relative;z-index:2">
+    <div class="rv">
+      <div class="hero-badge"><span class="bdot"></span>Available for freelance projects</div>
+      <h1 class="htitle"><span class="n1">Shoaib</span><span class="n2">Khan<span class="ad">.</span></span></h1>
+      <p class="hdesc">WordPress Developer & Digital Marketer with 3+ years building full-featured websites, e-commerce platforms, and AI-powered web solutions.</p>
+      <div class="hbtns">
+        <a href="#projects" class="bp">View My Work →</a>
+        <a href="#contact" class="bs">Let's Talk</a>
+      </div>
+      <div class="hstats">
+        <div><div class="sn">3<em>+</em></div><div class="sl">Years Exp.</div></div>
+        <div><div class="sn">10<em>+</em></div><div class="sl">Projects</div></div>
+        <div><div class="sn">4<em>+</em></div><div class="sl">Clients</div></div>
+        <div><div class="sn">5<em>★</em></div><div class="sl">Rated</div></div>
+      </div>
+    </div>
+    <div class="rv d2">
+      <div class="pfc">
+        <div class="pfc-img">
+          <img id="img-profile" src="" alt="Shoaib Khan">
+          <div class="pfc-fade"></div>
+        </div>
+        <div class="pfc-meta">
+          <div class="pfc-name">Shoaib Khan</div>
+          <div class="pfc-role">WordPress Dev · Digital Marketer · AI Builder</div>
+          <div class="chips">
+            <span class="chip on">Available</span><span class="chip">Haripur, PK</span>
+            <span class="chip">PAF-IAST CS</span><span class="chip">Fiverr ⭐</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="mq">
+  <div class="mq-t">
+    <div class="mq-i"><em>✦</em> WordPress Development</div><div class="mq-i"><em>✦</em> WooCommerce</div>
+    <div class="mq-i"><em>✦</em> E-commerce SEO</div><div class="mq-i"><em>✦</em> Elementor Pro</div>
+    <div class="mq-i"><em>✦</em> Digital Marketing</div><div class="mq-i"><em>✦</em> AI & RAG Systems</div>
+    <div class="mq-i"><em>✦</em> UI/UX Design</div><div class="mq-i"><em>✦</em> Lead Generation</div>
+    <div class="mq-i"><em>✦</em> Social Media Mgmt</div><div class="mq-i"><em>✦</em> Python · Flask</div>
+    <div class="mq-i"><em>✦</em> WordPress Development</div><div class="mq-i"><em>✦</em> WooCommerce</div>
+    <div class="mq-i"><em>✦</em> E-commerce SEO</div><div class="mq-i"><em>✦</em> Elementor Pro</div>
+    <div class="mq-i"><em>✦</em> Digital Marketing</div><div class="mq-i"><em>✦</em> AI & RAG Systems</div>
+    <div class="mq-i"><em>✦</em> UI/UX Design</div><div class="mq-i"><em>✦</em> Lead Generation</div>
+    <div class="mq-i"><em>✦</em> Social Media Mgmt</div><div class="mq-i"><em>✦</em> Python · Flask</div>
+  </div>
+</div>
+
+<!-- PROJECTS -->
+<section id="projects">
+<div class="wrap">
+  <div class="ptop rv">
+    <div>
+      <div class="slabel">Selected Work</div>
+      <h2 class="stitle">Projects I've <span class="dim">built</span></h2>
+      <p class="ssub" style="margin-top:.7rem">Browse by skill. Click <strong style="color:var(--text)">"View All Screenshots"</strong> to see every page.</p>
+    </div>
+    <div class="big-num">04</div>
+  </div>
+  <div class="skill-tabs rv d1">
+    <button class="stab active" onclick="showGroup(this,'all')">All Projects</button>
+    <button class="stab" onclick="showGroup(this,'wordpress')">WordPress Dev</button>
+    <button class="stab" onclick="showGroup(this,'ecommerce')">E-commerce</button>
+    <button class="stab" onclick="showGroup(this,'marketing')">Digital Marketing</button>
+    <button class="stab" onclick="showGroup(this,'ai')">AI & Python</button>
+    <button class="stab" onclick="showGroup(this,'uiux')">UI/UX Design</button>
+    <button class="stab" onclick="showGroup(this,'social')">Social Media</button>
+  </div>
+
+  <!-- ALL -->
+  <div class="proj-group show" id="g-all">
+      <div class="pcard pcard-feat rv">
+      <div class="pgrid">
+  <div class="pcard pcard-sm rv">
+    <div class="pcard-banner" onclick="openLB('ka',0)">
+      <img class="banner-img" id="b-ka" src="" alt="Ku-Apparel">
+      <div class="banner-fade"></div>
+      <button class="view-all-btn" onclick="event.stopPropagation();openLB('ka',0)">View All Screenshots →</button>
+    </div>
+    <div class="pcard-info">
+      <div class="card-tags"><span class="ctag ce">E-commerce</span><span class="ctag cw">WordPress</span></div>
+      <div class="pnum">01 · FEATURED</div>
+      <div class="pname">Ku-Apparel</div>
+      <div class="pfor">Fashion E-commerce · WooCommerce</div>
+      <p class="pdesc">Full WooCommerce fashion store with home, shop, product listings, order tracking, and contact pages. E-commerce SEO and payment gateways throughout.</p>
+      <div class="tpills"><span class="tp">WordPress</span><span class="tp">WooCommerce</span><span class="tp">Elementor</span><span class="tp">E-commerce SEO</span></div>
+      <button class="arrow-btn" onclick="openLB('ka',0)">View All Screenshots →</button>
+    </div>
+  </div>
+  <div class="pcard pcard-sm rv d1">
+    <div class="pcard-banner" onclick="openLB('ns',0)">
+      <img class="banner-img" id="b-ns" src="" alt="NS-Holding">
+      <div class="banner-fade"></div>
+      <button class="view-all-btn" onclick="event.stopPropagation();openLB('ns',0)">View All Screenshots →</button>
+    </div>
+    <div class="pcard-info">
+      <div class="card-tags"><span class="ctag ca2">AI Company</span><span class="ctag cw">WordPress</span></div>
+      <div class="pnum">02</div>
+      <div class="pname">NS-Holding</div>
+      <div class="pfor">AI & Security Solutions · 5 Pages</div>
+      <p class="pdesc">Corporate multi-page site for an international AI & security company with offices across 8 countries.</p>
+      <div class="tpills"><span class="tp">WordPress</span><span class="tp">Elementor</span><span class="tp">Corporate</span><span class="tp">Multi-page</span></div>
+      <button class="arrow-btn" onclick="openLB('ns',0)">View All Screenshots →</button>
+    </div>
+  </div>
+  <div class="pcard pcard-sm rv d2">
+    <div class="pcard-banner" onclick="openLB('ca',0)">
+      <img class="banner-img" id="b-ca" src="" alt="Codearva">
+      <div class="banner-fade"></div>
+      <button class="view-all-btn" onclick="event.stopPropagation();openLB('ca',0)">View All Screenshots →</button>
+    </div>
+    <div class="pcard-info">
+      <div class="card-tags"><span class="ctag cd">Digital Agency</span><span class="ctag cw">WordPress</span></div>
+      <div class="pnum">03</div>
+      <div class="pname">Codearva Solutions</div>
+      <div class="pfor">Digital Marketing Agency · 5 Pages</div>
+      <p class="pdesc">Full agency website with services, pricing tables, meeting booking, FAQ, and client reviews. Bold yellow-black brand identity.</p>
+      <div class="tpills"><span class="tp">WordPress</span><span class="tp">Elementor</span><span class="tp">Booking System</span><span class="tp">Pricing Tables</span></div>
+      <button class="arrow-btn" onclick="openLB('ca',0)">View All Screenshots →</button>
+    </div>
+  </div>
+  <div class="pcard pcard-sm rv d3" style="background:linear-gradient(135deg,#0a0814,#080811);border-color:rgba(139,92,246,.22)">
+    <div class="pcard-banner" style="background:#07071a" onclick="openLB('ic',0)">
+      <img class="banner-img" id="b-ic" src="" alt="IntelliCampus">
+      <div class="banner-fade" style="background:linear-gradient(to top,#0a0814,transparent)"></div>
+      <button class="view-all-btn" onclick="event.stopPropagation();openLB('ic',0)">View All Screenshots →</button>
+    </div>
+    <div class="pcard-info">
+      <div class="card-tags"><span class="ctag ca2">AI / FYP</span><span class="ctag cr">RAG Pipeline</span></div>
+      <div class="pnum">04 · FINAL YEAR PROJECT</div>
+      <div class="pname">IntelliCampus</div>
+      <div class="pfor" style="color:#a78bfa">PAF-IAST AI University Assistant</div>
+      <p class="pdesc">AI chatbot using RAG, FAISS, LangChain & Llama-4 via Groq. Hallucination-free answers from official PAF-IAST documents. Supervised by Dr. Rashid Naseem.</p>
+      <div class="tpills"><span class="tp">Python</span><span class="tp">Flask</span><span class="tp">RAG</span><span class="tp">FAISS</span><span class="tp">LangChain</span><span class="tp">Llama-4</span></div>
+      <button class="arrow-btn" onclick="openLB('ic',0)" style="color:#a78bfa">View All Screenshots →</button>
+    </div>
+  </div>
+</div>
+
+  <!-- WORDPRESS -->
+  <div class="proj-group" id="g-wordpress">
+    <p class="group-title">WordPress Development Projects</p>
+    <div class="pgrid">
+      <div class="pcard pcard-sm rv"><div class="pcard-banner" onclick="openLB('ka',0)"><img class="banner-img" src="" data-src="ka_home" alt="Ku-Apparel"><div class="banner-fade"></div><button class="view-all-btn" onclick="event.stopPropagation();openLB('ka',0)">View Screenshots →</button></div><div class="pcard-info"><div class="card-tags"><span class="ctag ce">E-commerce</span><span class="ctag cw">WordPress</span></div><div class="pname">Ku-Apparel</div><div class="pfor">WooCommerce Fashion Store</div><p class="pdesc">Custom WooCommerce store with full product catalog, order tracking, and payment gateways.</p><div class="tpills"><span class="tp">WordPress</span><span class="tp">WooCommerce</span><span class="tp">Elementor</span></div><button class="arrow-btn" onclick="openLB('ka',0)">View Screenshots →</button></div></div>
+      <div class="pcard pcard-sm rv d1"><div class="pcard-banner" onclick="openLB('ns',0)"><img class="banner-img" src="" data-src="ns_home" alt="NS-Holding"><div class="banner-fade"></div><button class="view-all-btn" onclick="event.stopPropagation();openLB('ns',0)">View Screenshots →</button></div><div class="pcard-info"><div class="card-tags"><span class="ctag ca2">Corporate</span><span class="ctag cw">WordPress</span></div><div class="pname">NS-Holding</div><div class="pfor">Multi-page Corporate Site</div><p class="pdesc">5-page corporate WordPress site for an international AI & security company.</p><div class="tpills"><span class="tp">WordPress</span><span class="tp">Elementor</span><span class="tp">Multi-page</span></div><button class="arrow-btn" onclick="openLB('ns',0)">View Screenshots →</button></div></div>
+      <div class="pcard pcard-sm rv d2"><div class="pcard-banner" onclick="openLB('ca',0)"><img class="banner-img" src="" data-src="ca_home" alt="Codearva"><div class="banner-fade"></div><button class="view-all-btn" onclick="event.stopPropagation();openLB('ca',0)">View Screenshots →</button></div><div class="pcard-info"><div class="card-tags"><span class="ctag cd">Agency</span><span class="ctag cw">WordPress</span></div><div class="pname">Codearva Solutions</div><div class="pfor">Agency Site · Booking System</div><p class="pdesc">Agency website with booking calendar, pricing tables and client testimonials.</p><div class="tpills"><span class="tp">WordPress</span><span class="tp">Elementor</span><span class="tp">Booking</span></div><button class="arrow-btn" onclick="openLB('ca',0)">View Screenshots →</button></div></div>
+    </div>
+  </div>
+
+  <!-- ECOMMERCE -->
+  <div class="proj-group" id="g-ecommerce">
+    <p class="group-title">E-commerce Projects</p>
+    <div class="pcard pcard-feat rv">
+      <div class="pcard-banner" style="min-height:420px" onclick="openLB('ka',0)"><img class="banner-img" src="" data-src="ka_home" alt="Ku-Apparel" style="height:100%;object-fit:cover;object-position:top"><div class="banner-side-fade"></div><button class="view-all-btn" onclick="event.stopPropagation();openLB('ka',0)">View All Screenshots →</button></div>
+      <div class="pcard-info"><div class="card-tags"><span class="ctag ce">E-commerce</span><span class="ctag cw">WooCommerce</span></div><div class="pnum">FEATURED</div><div class="pname">Ku-Apparel</div><div class="pfor">Full WooCommerce Fashion Store</div><p class="pdesc">Complete e-commerce platform with product catalog, categories, add-to-cart, payment gateways, order tracking, and contact. E-commerce SEO implemented throughout.</p><div class="tpills"><span class="tp">WooCommerce</span><span class="tp">WordPress</span><span class="tp">Payment Gateway</span><span class="tp">E-commerce SEO</span><span class="tp">Order Tracking</span></div><button class="arrow-btn" onclick="openLB('ka',0)">View All Screenshots →</button></div>
+    </div>
+  </div>
+
+  <!-- DIGITAL MARKETING -->
+  <div class="proj-group" id="g-marketing">
+    <p class="group-title">Digital Marketing Projects</p>
+    <div class="pcard pcard-feat rv">
+      <div class="pcard-banner" style="min-height:420px" onclick="openLB('ca',0)"><img class="banner-img" src="" data-src="ca_home" alt="Codearva" style="height:100%;object-fit:cover;object-position:top"><div class="banner-side-fade"></div><button class="view-all-btn" onclick="event.stopPropagation();openLB('ca',0)">View All Screenshots →</button></div>
+      <div class="pcard-info"><div class="card-tags"><span class="ctag cd">Digital Marketing</span><span class="ctag cw">WordPress</span></div><div class="pnum">FEATURED</div><div class="pname">Codearva Solutions</div><div class="pfor">Digital Marketing Agency Website</div><p class="pdesc">Complete agency website with full service listing, pricing packages (SMM, SEO, PPC, App Dev, Web Dev), booking system, and client testimonials.</p><div class="tpills"><span class="tp">SEO</span><span class="tp">PPC</span><span class="tp">Social Media</span><span class="tp">Booking System</span><span class="tp">Pricing Tables</span></div><button class="arrow-btn" onclick="openLB('ca',0)">View All Screenshots →</button></div>
+    </div>
+  </div>
+
+  <!-- AI -->
+  <div class="proj-group" id="g-ai">
+    <p class="group-title">AI & Python Projects</p>
+    <div class="pcard pcard-feat rv" style="background:linear-gradient(135deg,#0a0814,#080811);border-color:rgba(139,92,246,.22)">
+      <div class="pcard-banner" style="background:#07071a;min-height:420px" onclick="openLB('ic',0)"><img class="banner-img" src="" data-src="ic_landing" alt="IntelliCampus" style="height:100%;object-fit:cover;object-position:top"><div class="banner-side-fade" style="background:linear-gradient(to right,transparent 50%,#0a0814 100%)"></div><button class="view-all-btn" onclick="event.stopPropagation();openLB('ic',0)">View All Screenshots →</button></div>
+      <div class="pcard-info"><div class="card-tags"><span class="ctag ca2">AI / FYP</span><span class="ctag cr">RAG</span></div><div class="pnum">FINAL YEAR PROJECT</div><div class="pname" style="font-size:1.5rem">IntelliCampus</div><div class="pfor" style="color:#a78bfa">PAF-IAST AI University Assistant</div><p class="pdesc">AI chatbot built with RAG, FAISS, LangChain, and Llama-4 via Groq. Answers PAF-IAST university queries from official documents with no hallucinations. Supervised by Dr. Rashid Naseem.</p><div class="tpills"><span class="tp">Python</span><span class="tp">Flask</span><span class="tp">RAG</span><span class="tp">FAISS</span><span class="tp">LangChain</span><span class="tp">Llama-4</span><span class="tp">Groq</span></div><button class="arrow-btn" onclick="openLB('ic',0)" style="color:#a78bfa">View All Screenshots →</button></div>
+    </div>
+  </div>
+
+  <!-- UI/UX -->
+  <div class="proj-group" id="g-uiux">
+    <div class="empty-skill"><strong>UI/UX Design</strong>Projects coming soon — UI/UX internship work & design prototypes from IT-Hub Rawalpindi will be added here.</div>
+  </div>
+
+  <!-- SOCIAL -->
+  <div class="proj-group" id="g-social">
+    <div class="empty-skill"><strong>Social Media Management</strong>Campaign work & results from Awtech Solutions internship will be added here.</div>
+  </div>
+</div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+<div class="wrap">
+  <div class="about-layout">
+    <div class="about-pic-wrap rv">
+      <div class="about-pic"><img id="img-about" src="" alt="Shoaib Khan"></div>
+      <div class="about-badge"><span class="ab-big">3+</span><span class="ab-sm">Years of<br>Experience</span></div>
+    </div>
+    <div class="rv d2">
+      <div class="slabel">About Me</div>
+      <h2 class="stitle">The developer <span class="dim">behind the work</span></h2>
+      <div style="margin-top:1.2rem">
+        <p style="color:#666;line-height:1.88;font-size:.9rem;margin-bottom:.85rem;font-weight:300">I'm Shoaib Khan — a WordPress Developer and Digital Marketer from Haripur, Pakistan, currently completing my BS in Computer Science at PAF-IAST (2022–2026). With 3+ years of hands-on experience, I've built e-commerce platforms, corporate websites, digital agency sites, and AI-powered solutions.</p>
+        <p style="color:#666;line-height:1.88;font-size:.9rem;margin-bottom:.85rem;font-weight:300">I'm also an entrepreneur — I founded Buy-Hood (e-commerce store) and led LeadsChase (digital agency). My Final Year Project, IntelliCampus, is an AI university chatbot built with RAG, FAISS, and Llama-4, supervised by Dr. Rashid Naseem at PAF-IAST.</p>
+        <p style="color:#666;line-height:1.88;font-size:.9rem;font-weight:300">Available for freelance WordPress development, WooCommerce stores, digital marketing, and AI-integrated websites.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-top:1.8rem">
+        <div style="background:var(--bg3);border:1px solid var(--border);border-radius:13px;padding:1.1rem 1.3rem"><div style="font-size:1.1rem;margin-bottom:.5rem">🎯</div><div style="font-family:var(--fh);font-size:.82rem;font-weight:700;margin-bottom:.18rem">Results-Driven</div><div style="font-size:.72rem;color:var(--dim);line-height:1.55">Every project built with performance and real business goals in mind</div></div>
+        <div style="background:var(--bg3);border:1px solid var(--border);border-radius:13px;padding:1.1rem 1.3rem"><div style="font-size:1.1rem;margin-bottom:.5rem">🤖</div><div style="font-family:var(--fh);font-size:.82rem;font-weight:700;margin-bottom:.18rem">AI-Forward</div><div style="font-size:.72rem;color:var(--dim);line-height:1.55">Integrating AI solutions into modern web development projects</div></div>
+        <div style="background:var(--bg3);border:1px solid var(--border);border-radius:13px;padding:1.1rem 1.3rem"><div style="font-size:1.1rem;margin-bottom:.5rem">📱</div><div style="font-family:var(--fh);font-size:.82rem;font-weight:700;margin-bottom:.18rem">Mobile-First</div><div style="font-size:.72rem;color:var(--dim);line-height:1.55">Fully responsive designs that look perfect on every device</div></div>
+        <div style="background:var(--bg3);border:1px solid var(--border);border-radius:13px;padding:1.1rem 1.3rem"><div style="font-size:1.1rem;margin-bottom:.5rem">🚀</div><div style="font-family:var(--fh);font-size:.82rem;font-weight:700;margin-bottom:.18rem">Fast Delivery</div><div style="font-size:.72rem;color:var(--dim);line-height:1.55">5-star track record delivering quality work on time, every time</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+<div class="wrap">
+  <div class="sk-layout">
+    <div class="rv">
+      <div class="slabel">Expertise</div>
+      <h2 class="stitle">What I <span class="dim">do best</span></h2>
+      <p class="ssub" style="margin-top:.9rem">From custom WordPress builds to AI-powered chatbots — covering the full stack of web development and digital marketing.</p>
+      <div style="margin-top:2rem;padding:1.4rem;background:var(--bg2);border:1px solid var(--border);border-radius:14px">
+        <div style="font-size:.65rem;color:var(--dim);text-transform:uppercase;letter-spacing:.12em;margin-bottom:.65rem;font-family:var(--fh)">Education</div>
+        <div style="font-family:var(--fh);font-size:.88rem;font-weight:700;margin-bottom:.18rem">BS Computer Science</div>
+        <div style="font-size:.75rem;color:var(--muted)">PAF-IAST, Haripur · 2022 – 2026</div>
+      </div>
+    </div>
+    <div class="sk-grid">
+      <div class="skc rv"><div class="sk-icon">⚡</div><div class="sk-n">WordPress Dev</div><div class="sk-d">Custom themes, plugin integration, Elementor, responsive design, WooCommerce</div></div>
+      <div class="skc rv d1"><div class="sk-icon">🛒</div><div class="sk-n">E-commerce</div><div class="sk-d">WooCommerce, payment gateways, inventory management, e-commerce SEO</div></div>
+      <div class="skc rv d2"><div class="sk-icon">📈</div><div class="sk-n">Digital Marketing</div><div class="sk-d">SEO, social media, lead generation, PPC, campaign management</div></div>
+      <div class="skc rv d3"><div class="sk-icon">🤖</div><div class="sk-n">AI & Development</div><div class="sk-d">Python, RAG, FAISS, Hugging Face, LangChain, Llama-4, Flask, Groq</div></div>
+      <div class="skc rv"><div class="sk-icon">🎨</div><div class="sk-n">UI/UX Design</div><div class="sk-d">Figma, wireframing, prototyping, user research, usability testing</div></div>
+      <div class="skc rv d1"><div class="sk-icon">📱</div><div class="sk-n">Social Media</div><div class="sk-d">Content creation, calendars, community management, analytics</div></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+<div class="wrap">
+  <div class="exp-layout">
+    <div class="rv">
+      <div class="slabel">Journey</div>
+      <h2 class="stitle">Work & <span class="dim">Experience</span></h2>
+      <p class="ssub" style="margin-top:.9rem;font-size:.86rem">3+ years across agencies, startups, freelance platforms, and entrepreneurial ventures.</p>
+    </div>
+    <div class="exp-list rv d2">
+      <div class="exp-item"><div class="exp-date">Jul – Aug 2025</div><div><div class="exp-role">Social Media Management Intern</div><div class="exp-co">Awtech Solutions</div><div class="exp-d">Managed content across Facebook, Instagram & LinkedIn. Developed content calendars, ran paid campaigns, tracked analytics.</div></div></div>
+      <div class="exp-item"><div class="exp-date">Jul – Aug 2024</div><div><div class="exp-role">UI/UX Design Intern</div><div class="exp-co">IT-Hub Rawalpindi</div><div class="exp-d">Designed web & mobile UI prototypes in Figma. Conducted user research and created interactive prototypes for client presentations.</div></div></div>
+      <div class="exp-item"><div class="exp-date">Nov 2023 – Present</div><div><div class="exp-role">CEO & Founder</div><div class="exp-co">Buy-Hood (E-commerce Store)</div><div class="exp-d">Founded and operate an online e-commerce store — inventory, logistics, order fulfillment, and digital marketing growth.</div></div></div>
+      <div class="exp-item"><div class="exp-date">Jul – Oct 2023</div><div><div class="exp-role">CEO</div><div class="exp-co">LeadsChase Digital Agency</div><div class="exp-d">Led agency operations, client relationships, and team management delivering digital marketing results.</div></div></div>
+      <div class="exp-item"><div class="exp-date">Apr – Jul 2023</div><div><div class="exp-role">Leads Team Manager</div><div class="exp-co">LeadsNite</div><div class="exp-d">Managed lead generation campaigns, optimizing ROI and driving brand awareness for clients.</div></div></div>
+      <div class="exp-item"><div class="exp-date">Mar 2021 – Aug 2022</div><div><div class="exp-role">WordPress Developer</div><div class="exp-co">Fiverr (Freelance)</div><div class="exp-d">Developed custom WordPress websites for international clients with 5★ satisfaction ratings.</div></div></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+<div class="wrap">
+  <div style="text-align:center;margin-bottom:3.5rem" class="rv">
+    <div class="slabel">Get in Touch</div>
+    <h2 class="stitle">Let's build <span class="dim">something great</span></h2>
+    <p class="ssub" style="margin:.6rem auto 0;text-align:center">Available for freelance WordPress development, WooCommerce stores, digital marketing, and full website builds.</p>
+  </div>
+  <div class="contact-layout">
+    <div class="rv">
+      <div style="font-family:var(--fh);font-size:.92rem;font-weight:700;margin-bottom:1.1rem">Direct channels</div>
+      <div class="clinks">
+        <a href="mailto:shoaiibkhanjadoonn@gmail.com" class="cl"><div class="cl-ic">✉</div><div><div class="cl-lb">Email</div><div class="cl-vl">shoaiibkhanjadoonn@gmail.com</div></div></a>
+        <a href="tel:+923320390107" class="cl"><div class="cl-ic">📞</div><div><div class="cl-lb">Phone / WhatsApp</div><div class="cl-vl">+92-332-0390107</div></div></a>
+        <a href="https://linkedin.com/in/shoaib-khan1633752b9" target="_blank" class="cl"><div class="cl-ic" style="font-family:sans-serif;font-size:.72rem;font-weight:800;color:var(--accent)">in</div><div><div class="cl-lb">LinkedIn</div><div class="cl-vl">shoaib-khan1633752b9</div></div></a>
+        <a href="https://www.fiverr.com" target="_blank" class="cl"><div class="cl-ic">🟢</div><div><div class="cl-lb">Fiverr</div><div class="cl-vl">Available for WordPress projects</div></div></a>
+      </div>
+    </div>
+    <div class="cform-wrap rv d2">
+      <div class="cft">Send a message</div>
+      <div class="cform">
+        <div class="frow">
+          <div class="fg"><label class="fl">Name</label><input type="text" class="fi" id="cf-name" placeholder="Your name"></div>
+          <div class="fg"><label class="fl">Email</label><input type="email" class="fi" id="cf-email" placeholder="your@email.com"></div>
+        </div>
+        <div class="fg"><label class="fl">Subject</label><input type="text" class="fi" id="cf-subject" placeholder="What's this about?"></div>
+        <div class="fg"><label class="fl">Message</label><textarea class="fta" id="cf-msg" placeholder="Tell me about your project..."></textarea></div>
+        <button class="fsub" id="cf-btn" onclick="submitForm()">Send Message →</button>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<footer>
+  <div class="fc">© 2025 Shoaib Khan · All rights reserved</div>
+  <div class="fc">Built with <em>♥</em> in Haripur, Pakistan</div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lb" id="lb" onclick="lbOutside(event)">
+  <div class="lb-inner">
+    <button class="lb-close" onclick="closeLB()">✕</button>
+    <button class="lb-nav lb-prev" onclick="lbMove(-1)">‹</button>
+    <button class="lb-nav lb-next" onclick="lbMove(1)">›</button>
+    <div class="lb-counter" id="lb-ctr"></div>
+    <img class="lb-img" id="lb-img" src="" alt="">
+    <div class="lb-cap" id="lb-cap"></div>
+    <div class="lb-dots" id="lb-dots"></div>
+  </div>
+</div>
+
+<script>
+// ── Apply IMAGES config to all <img> tags ──────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('img-profile').src  = IMAGES.profile;
+  document.getElementById('img-about').src    = IMAGES.profile;
+  document.getElementById('b-ka').src         = IMAGES.ka_hello;
+  document.getElementById('b-ns').src         = IMAGES.ns_about;
+  document.getElementById('b-ca').src         = IMAGES.ca_home;
+  document.getElementById('b-ic').src         = IMAGES.ic_landing;
+  // Fill data-src images (duplicates in skill tabs)
+  document.querySelectorAll('img[data-src]').forEach(img => {
+    img.src = IMAGES[img.dataset.src];
+  });
+});
+
+// ── Lightbox data ──────────────────────────────────────────────
+function getLBData() {
+  return {
+    ka: {
+      imgs: [IMAGES.ka_home, IMAGES.ka_shop, IMAGES.ka_track, IMAGES.ka_contact],
+      caps: [
+        'Homepage — Hero banner, featured collections & client reviews',
+        'Shop Page — Full product catalog with filters & add to cart',
+        'Track Order — Real-time order tracking system',
+        'Contact Page — Support centre, Google Maps & message form'
+      ]
+    },
+    ns: {
+      imgs: [IMAGES.ns_home, IMAGES.ns_about, IMAGES.ns_services, IMAGES.ns_ai, IMAGES.ns_contact],
+      caps: [
+        'Homepage — Digital innovation hero, services overview & partner logos',
+        'About Us — Team profiles, company stats & business hours',
+        'Services — Core areas: AI, Physical Security & Electrical Instrumentations',
+        'Artificial Intelligence — Industry sectors & AI service details',
+        'Contact — 8 global office locations (Saudi Arabia, Pakistan, USA, UK, Singapore…)'
+      ]
+    },
+    ca: {
+      imgs: [IMAGES.ca_home, IMAGES.ca_about, IMAGES.ca_services, IMAGES.ca_meeting, IMAGES.ca_contact],
+      caps: [
+        'Homepage — "Digital Agency You Can Rely On" with client logos & testimonials',
+        'About Us — Agency intro, process flow, business hours & values',
+        'Services — 8 packages with full pricing table (SMM, SEO, PPC, Web Dev…)',
+        'Book Meeting — Expert consultation with interactive calendar picker',
+        'Contact — FAQ, contact form, map & 5-star client review carousel'
+      ]
+    },
+    ic: {
+      imgs: [IMAGES.ic_landing, IMAGES.ic_chat],
+      caps: [
+        'Landing Page — "Your smart campus assistant, always online" · 24/7 · Download APK',
+        'Live AI Chat — University questions answered instantly with RAG + Llama-4'
+      ]
+    }
+  };
+}
+
+let lbState = { project: null, idx: 0 };
+function openLB(project, idx) {
+  lbState = { project, idx };
+  document.getElementById('lb').classList.add('open');
+  renderLB();
+}
+function renderLB() {
+  const data = getLBData()[lbState.project];
+  document.getElementById('lb-img').src = data.imgs[lbState.idx];
+  document.getElementById('lb-cap').textContent = data.caps[lbState.idx] || '';
+  document.getElementById('lb-ctr').textContent = (lbState.idx + 1) + ' / ' + data.imgs.length;
+  document.getElementById('lb-dots').innerHTML = data.imgs.map((_, i) =>
+    `<div class="lbd ${i === lbState.idx ? 'on' : ''}" onclick="lbGo(${i})"></div>`
+  ).join('');
+}
+function lbGo(i) { lbState.idx = i; renderLB(); }
+function lbMove(d) {
+  const len = getLBData()[lbState.project].imgs.length;
+  lbState.idx = (lbState.idx + d + len) % len;
+  renderLB();
+}
+function closeLB() { document.getElementById('lb').classList.remove('open'); }
+function lbOutside(e) { if (e.target === document.getElementById('lb')) closeLB(); }
+document.addEventListener('keydown', e => {
+  if (!document.getElementById('lb').classList.contains('open')) return;
+  if (e.key === 'ArrowRight') lbMove(1);
+  if (e.key === 'ArrowLeft') lbMove(-1);
+  if (e.key === 'Escape') closeLB();
+});
+
+// ── Skill tabs ─────────────────────────────────────────────────
+function showGroup(btn, id) {
+  document.querySelectorAll('.proj-group').forEach(g => g.classList.remove('show'));
+  document.querySelectorAll('.stab').forEach(t => t.classList.remove('active'));
+  document.getElementById('g-' + id).classList.add('show');
+  btn.classList.add('active');
+}
+
+// ── Contact form ───────────────────────────────────────────────
+function submitForm() {
+  const n = document.getElementById('cf-name').value.trim();
+  const e = document.getElementById('cf-email').value.trim();
+  const s = document.getElementById('cf-subject').value.trim();
+  const m = document.getElementById('cf-msg').value.trim();
+  if (!n || !e || !s || !m) { alert('Please fill in all fields.'); return; }
+  const btn = document.getElementById('cf-btn');
+  btn.textContent = 'Sending...'; btn.disabled = true;
+  setTimeout(() => {
+    btn.textContent = 'Message Sent ✓'; btn.style.background = '#34d399';
+    ['cf-name','cf-email','cf-subject','cf-msg'].forEach(id => document.getElementById(id).value = '');
+    setTimeout(() => { btn.textContent = 'Send Message →'; btn.style.background = ''; btn.disabled = false; }, 4000);
+  }, 1200);
+}
+
+// ── Cursor ─────────────────────────────────────────────────────
+const cur = document.getElementById('cur'), curR = document.getElementById('curR');
+let mx = 0, my = 0, rx = 0, ry = 0;
+document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; cur.style.left = mx+'px'; cur.style.top = my+'px'; });
+setInterval(() => { rx += (mx-rx)*.12; ry += (my-ry)*.12; curR.style.left = rx+'px'; curR.style.top = ry+'px'; }, 16);
+document.querySelectorAll('a,button,.pcard,.stab').forEach(el => {
+  el.addEventListener('mouseenter', () => { cur.classList.add('big'); curR.classList.add('big'); });
+  el.addEventListener('mouseleave', () => { cur.classList.remove('big'); curR.classList.remove('big'); });
+});
+
+// ── Progress bar + nav scroll ──────────────────────────────────
+window.addEventListener('scroll', () => {
+  const s = window.scrollY, h = document.documentElement.scrollHeight - window.innerHeight;
+  document.getElementById('prog').style.width = (s/h*100) + '%';
+  document.getElementById('nav').classList.toggle('scrolled', s > 60);
+});
+
+// ── Scroll reveal ──────────────────────────────────────────────
+const obs = new IntersectionObserver(es => {
+  es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); }});
+}, { threshold: 0.08 });
+document.querySelectorAll('.rv').forEach(el => obs.observe(el));
+
+// ── Smooth nav links ───────────────────────────────────────────
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
+  });
+});
+</script>
+</body>
+</html>
