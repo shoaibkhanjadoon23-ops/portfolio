@@ -23,12 +23,10 @@ const IMAGES = {
   ka_shop:        "images/ku-apparel/shop.jpg",
   ka_track:       "images/ku-apparel/track.jpg",
   ka_contact:     "images/ku-apparel/contact.jpg",
-  ka_hello:       "images/ku-apparel/hello.png",
 
   // IntelliCampus AI Chatbot
-  ic_landing:     "images/intellicampus/Home (1).png",
-  ic_chat:        "images/intellicampus/Chat.png",
-  ic_screen:      "images/intellicampus/Screen.png",
+  ic_landing:     "images/intellicampus/landing.jpg",
+  ic_chat:        "images/intellicampus/chat.jpg",
 
   // NS-Holding Corporate Website
   ns_home:        "images/ns-holding/home.jpg",
@@ -675,7 +673,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('b-ns').src         = IMAGES.ns_home;
   document.getElementById('b-ca').src         = IMAGES.ca_home;
   document.getElementById('b-ic').src         = IMAGES.ic_landing;
-  document.getElementById('b-hr').src         = IMAGES.02-login.jpg;
+  document.getElementById('b-hr').src         = IMAGES.hr_signup;
   // Fill data-src images (duplicates in skill tabs)
   document.querySelectorAll('img[data-src]').forEach(img => {
     img.src = IMAGES[img.dataset.src];
