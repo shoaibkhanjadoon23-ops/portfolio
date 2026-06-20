@@ -19,7 +19,7 @@ const IMAGES = {
   profile:        "images/profile.jpg",
 
   // Ku-Apparel E-commerce Store
-  ka_home:        "images/ku-apparel/Home.jpg",
+  ka_home:        "images/ku-apparel/home.jpg",
   ka_shop:        "images/ku-apparel/shop.jpg",
   ka_track:       "images/ku-apparel/track.jpg",
   ka_contact:     "images/ku-apparel/contact.jpg",
@@ -27,7 +27,7 @@ const IMAGES = {
 
   // IntelliCampus AI Chatbot
   ic_landing:     "images/intellicampus/Home (1).png",
-  ic_chat:        "images/intellicampus/Chat.png",
+  ic_chat:        "images/intellicampus/chat.png",
   ic_screen:      "images/intellicampus/Screen.png",
 
   // NS-Holding Corporate Website
@@ -44,26 +44,27 @@ const IMAGES = {
   ca_meeting:     "images/codearva/meeting.jpg",
   ca_contact:     "images/codearva/contact.jpg",
 
-  // HRPro — HR Management System (Full-Stack SaaS)
-  hr_signup:      "images/hrpro/01-signup.jpg",
-  hr_login:       "images/hrpro/02-login.jpg",
-  hr_dashboard:   "images/hrpro/03-dashboard.jpg",
-  hr_jobpost:     "images/hrpro/04-job-posting.jpg",
-  hr_viewjob:     "images/hrpro/05-view-job.jpg",
-  hr_apply:       "images/hrpro/06-application-form.jpg",
-  hr_skillgap:    "images/hrpro/07-applicant-skillgap.jpg",
-  hr_aiassess:    "images/hrpro/08-create-assessment.jpg",
-  hr_assessdash:  "images/hrpro/09-assessments-dashboard.jpg",
-  hr_assessstart: "images/hrpro/10-assessment-start.jpg",
-  hr_anticheat:   "images/hrpro/11-anti-cheat.jpg",
-  hr_results:     "images/hrpro/12-assessment-results.jpg",
-  hr_schedule:    "images/hrpro/13-schedule-interview.jpg",
-  hr_interviews:  "images/hrpro/14-interviews-dashboard.jpg",
-  hr_offergen:    "images/hrpro/15-generate-offer.jpg",
-  hr_offeremail:  "images/hrpro/16-offer-email.jpg",
-  hr_offeraccept: "images/hrpro/17-offer-accepted.jpg",
-  hr_employees:   "images/hrpro/18-employees.jpg",
-  hr_payroll:     "images/hrpro/19-payroll.jpg",
+  // HRPro — HR Management System
+  hp_login:                   "images/hrpro/login.png",
+  hp_signup:                  "images/hrpro/signup.png",
+  hp_dashboard:               "images/hrpro/dashboard.png",
+  hp_job_posting_dashboard:   "images/hrpro/job_posting_dashboard.png",
+  hp_job_posting:             "images/hrpro/job_posting.png",
+  hp_view_job:                "images/hrpro/view_job.png",
+  hp_job_application_form:    "images/hrpro/job_application_form.png",
+  hp_view_applications:       "images/hrpro/view_applications_dashboard.png",
+  hp_view_single_application: "images/hrpro/view_single_page_application.png",
+  hp_create_assessment:       "images/hrpro/create_assessment_by_ai.png",
+  hp_assessment_dashboard:    "images/hrpro/view_assessment_dashboard.png",
+  hp_assessment_startup:      "images/hrpro/assessment_startup_screen.png",
+  hp_assessment_anticheat:    "images/hrpro/assessment_anti_cheat.png",
+  hp_assessment_results:      "images/hrpro/results_of_assessment.png",
+  hp_schedule_interview:      "images/hrpro/schedule_interview.png",
+  hp_generate_offer:          "images/hrpro/generate_offer_letter.png",
+  hp_offer_email:             "images/hrpro/offer_letter_email.png",
+  hp_offer_acceptance:        "images/hrpro/offer_acceptance.png",
+  hp_add_employee:            "images/hrpro/add_employee.png",
+  hp_payroll:                 "images/hrpro/payroll_management.png",
 };
 </script>
 
@@ -139,8 +140,8 @@ h1.htitle .ad{color:var(--accent)}
 @keyframes mq{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
 /* SECTION */
-section{padding:7rem 3rem}
-.wrap{max-width:1280px;margin:0 auto}
+section{padding:7rem 0;width:100%;box-sizing:border-box}
+.wrap{max-width:1440px;margin: auto;width:100%;padding-left: 7.1rem;padding-right: 6rem}
 .slabel{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);font-weight:600;font-family:var(--fh);margin-bottom:.5rem}
 .stitle{font-family:var(--fh);font-size:clamp(2rem,3.5vw,3rem);font-weight:800;letter-spacing:-.04em;line-height:1.05;margin-bottom:.7rem}
 .stitle .dim{color:var(--dim)}
@@ -197,9 +198,12 @@ section{padding:7rem 3rem}
 .pcard:hover .arrow-btn{color:var(--accent);gap:.8rem}
 
 /* GRID */
-.pgrid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
-.pcard-sm .pcard-banner{height:240px}
-.pcard-sm .banner-img{height:100%;object-fit:cover;object-position:top}
+.pgrid{display:grid;grid-template-columns:repeat(2,minmax(550px,1fr));gap:2.0rem;align-items:stretch;width:100%;box-sizing:border-box}
+.pgrid .pcard{width:100%}
+.pgrid .pcard{display:flex;flex-direction:column;height:100%}
+.pgrid .pcard-info{flex:1;display:flex;flex-direction:column;justify-content:space-between;min-height:280px}
+.pcard-sm .pcard-banner{height:280px;overflow:hidden}
+.pcard-sm .banner-img{width:100%;height:100%;object-fit:cover;object-position:top center}
 .pcard-sm .pcard-info{padding:1.6rem 1.8rem}
 .pcard-sm .pname{font-size:1.25rem}
 
@@ -284,21 +288,118 @@ footer{padding:1.8rem 3rem;border-top:1px solid var(--border);display:flex;align
 .rv.d1{transition-delay:.1s}.rv.d2{transition-delay:.2s}.rv.d3{transition-delay:.3s}
 
 @media(max-width:1024px){
-  nav{padding:0 1.5rem}.nav-links{display:none}
-  .hero{grid-template-columns:1fr;padding:8rem 1.5rem 4rem}
+  @media(hover:none){
+  .cursor,.cursor-ring{display:none}
+  body{cursor:auto}
+}
+
+/* ── TABLET (max 1024px) ── */
+@media(max-width:1024px){
+  nav{padding:0 1.5rem}
+  .nav-links{display:none}
+
+  .hero{grid-template-columns:1fr;padding:8rem 1.5rem 4rem;gap:2.5rem}
+  .hero-blob,.hero-blob2{width:300px;height:300px}
   .pfc{display:grid;grid-template-columns:160px 1fr}
   .pfc-img img{height:160px}
+  .pfc-fade{height:30%}
+
+  .wrap{padding-left:2rem;padding-right:2rem}
+  section{padding:5rem 0}
+
+  .pgrid{grid-template-columns:1fr 1fr;gap:1.2rem}
+  .pcard-sm .pcard-banner{height:220px}
+
   .pcard-feat{grid-template-columns:1fr}
-  .pcard-feat .banner-side-fade{display:none}.pcard-feat .banner-fade{display:block !important}
+  .pcard-feat .banner-side-fade{display:none}
+  .pcard-feat .banner-fade{display:block !important}
   .pcard-feat .view-all-btn{left:50%;right:auto;transform:translateX(-50%)}
-  .pgrid{grid-template-columns:1fr}
-  .about-layout{grid-template-columns:1fr;gap:3rem}.about-pic-wrap{margin-bottom:2rem}
-  .sk-layout,.exp-layout,.contact-layout{grid-template-columns:1fr;gap:3rem}
-  section{padding:5rem 1.5rem}
-  .exp-item{grid-template-columns:1fr;gap:.18rem}
-  .frow{grid-template-columns:1fr}
+
+  .about-layout{grid-template-columns:1fr;gap:3rem}
+  .about-pic-wrap{margin-bottom:2rem}
+  .about-pic{width:240px;height:240px}
+
+  .sk-layout{grid-template-columns:1fr;gap:3rem}
+  .sk-grid{grid-template-columns:1fr 1fr}
+
+  .exp-layout{grid-template-columns:1fr;gap:2rem}
+  .exp-item{grid-template-columns:120px 1fr;gap:1rem}
+
+  .contact-layout{grid-template-columns:1fr;gap:2.5rem}
+  .frow{grid-template-columns:1fr 1fr}
+
   footer{flex-direction:column;gap:.5rem;text-align:center;padding:1.5rem}
-  .lb-prev{left:-10px}.lb-next{right:-10px}
+
+  .lb-prev{left:-10px}
+  .lb-next{right:-10px}
+  .lb-inner{width:95%}
+}
+
+/* ── MOBILE (max 640px) ── */
+@media(max-width:640px){
+  nav{padding:0 1.2rem;height:60px}
+  .nav-cta{padding:.4rem 1rem;font-size:.72rem}
+
+  .hero{padding:7rem 1.2rem 3rem;gap:2rem}
+  h1.htitle{font-size:clamp(2.8rem,12vw,4rem)}
+  .hdesc{font-size:.88rem}
+  .hbtns{flex-direction:column;gap:.7rem}
+  .bp,.bs{text-align:center;justify-content:center;padding:.8rem 1.5rem}
+  .hstats{gap:1.2rem;flex-wrap:wrap}
+  .sn{font-size:1.5rem}
+
+  .pfc{display:block}
+  .pfc-img img{height:260px}
+
+  .wrap{padding-left:1.2rem;padding-right:1.2rem}
+  section{padding:4rem 0}
+
+  .pgrid{grid-template-columns:1fr;gap:1.2rem}
+  .pcard-sm .pcard-banner{height:200px}
+  .pgrid .pcard-info{min-height:auto}
+
+  .skill-tabs{gap:.4rem}
+  .stab{padding:.38rem .85rem;font-size:.65rem}
+
+  .ptop{flex-direction:column;align-items:flex-start;gap:.5rem}
+  .big-num{font-size:3rem}
+
+  .about-layout{gap:2rem}
+  .about-pic{width:200px;height:200px}
+  .about-badge{bottom:8px;right:8px;padding:.6rem .9rem}
+  .ab-big{font-size:1.4rem}
+
+  .sk-grid{grid-template-columns:1fr 1fr;gap:.7rem}
+  .skc{padding:1rem}
+
+  .exp-layout{gap:1.5rem}
+  .exp-item{grid-template-columns:1fr;gap:.15rem;padding:1.2rem 0}
+  .exp-date{font-size:.68rem}
+
+  .contact-layout{gap:2rem}
+  .frow{grid-template-columns:1fr}
+  .cform-wrap{padding:1.5rem}
+
+  .stitle{font-size:clamp(1.6rem,6vw,2.2rem)}
+
+  .lb-inner{width:98%}
+  .lb-prev{left:-8px}
+  .lb-next{right:-8px}
+  .lb-cap{font-size:.72rem}
+
+  footer{padding:1.2rem 1.5rem}
+}
+
+/* ── SMALL MOBILE (max 400px) ── */
+@media(max-width:400px){
+  .hero{padding:6.5rem 1rem 3rem}
+  .wrap{padding-left:1rem;padding-right:1rem}
+  h1.htitle{font-size:clamp(2.4rem,11vw,3rem)}
+  .sk-grid{grid-template-columns:1fr}
+  .hstats{gap:1rem}
+  .pgrid{grid-template-columns:1fr}
+  .stab{padding:.32rem .7rem;font-size:.62rem}
+}
 }
 </style>
 </head>
@@ -333,7 +434,7 @@ footer{padding:1.8rem 3rem;border-top:1px solid var(--border);display:flex;align
       </div>
       <div class="hstats">
         <div><div class="sn">3<em>+</em></div><div class="sl">Years Exp.</div></div>
-        <div><div class="sn">10<em>+</em></div><div class="sl">Projects</div></div>
+        <div><div class="sn">5<em>+</em></div><div class="sl">Projects</div></div>
         <div><div class="sn">4<em>+</em></div><div class="sl">Clients</div></div>
         <div><div class="sn">5<em>★</em></div><div class="sl">Rated</div></div>
       </div>
@@ -364,13 +465,13 @@ footer{padding:1.8rem 3rem;border-top:1px solid var(--border);display:flex;align
     <div class="mq-i"><em>✦</em> Digital Marketing</div><div class="mq-i"><em>✦</em> AI & RAG Systems</div>
     <div class="mq-i"><em>✦</em> UI/UX Design</div><div class="mq-i"><em>✦</em> Lead Generation</div>
     <div class="mq-i"><em>✦</em> Social Media Mgmt</div><div class="mq-i"><em>✦</em> Python · Flask</div>
-    <div class="mq-i"><em>✦</em> FastAPI · PostgreSQL</div><div class="mq-i"><em>✦</em> Full-Stack SaaS</div>
+    <div class="mq-i"><em>✦</em> HR Management Systems</div><div class="mq-i"><em>✦</em> Supabase · Vercel</div>
     <div class="mq-i"><em>✦</em> WordPress Development</div><div class="mq-i"><em>✦</em> WooCommerce</div>
     <div class="mq-i"><em>✦</em> E-commerce SEO</div><div class="mq-i"><em>✦</em> Elementor Pro</div>
     <div class="mq-i"><em>✦</em> Digital Marketing</div><div class="mq-i"><em>✦</em> AI & RAG Systems</div>
     <div class="mq-i"><em>✦</em> UI/UX Design</div><div class="mq-i"><em>✦</em> Lead Generation</div>
     <div class="mq-i"><em>✦</em> Social Media Mgmt</div><div class="mq-i"><em>✦</em> Python · Flask</div>
-    <div class="mq-i"><em>✦</em> FastAPI · PostgreSQL</div><div class="mq-i"><em>✦</em> Full-Stack SaaS</div>
+    <div class="mq-i"><em>✦</em> HR Management Systems</div><div class="mq-i"><em>✦</em> Supabase · Vercel</div>
   </div>
 </div>
 
@@ -387,109 +488,100 @@ footer{padding:1.8rem 3rem;border-top:1px solid var(--border);display:flex;align
   </div>
   <div class="skill-tabs rv d1">
     <button class="stab active" onclick="showGroup(this,'all')">All Projects</button>
-    <button class="stab" onclick="showGroup(this,'saas')">Full-Stack / SaaS</button>
     <button class="stab" onclick="showGroup(this,'wordpress')">WordPress Dev</button>
     <button class="stab" onclick="showGroup(this,'ecommerce')">E-commerce</button>
     <button class="stab" onclick="showGroup(this,'marketing')">Digital Marketing</button>
     <button class="stab" onclick="showGroup(this,'ai')">AI & Python</button>
     <button class="stab" onclick="showGroup(this,'uiux')">UI/UX Design</button>
     <button class="stab" onclick="showGroup(this,'social')">Social Media</button>
+    <button class="stab" onclick="showGroup(this,'fullstack')">Full Stack</button>
   </div>
 
   <!-- ALL -->
   <div class="proj-group show" id="g-all">
-    <div class="pcard pcard-feat rv" style="background:linear-gradient(135deg,#0a1410,#08110e);border-color:rgba(34,211,238,.22)">
-      <div class="pcard-banner" style="background:#061210;min-height:460px" onclick="openLB('hr',0)">
-        <img class="banner-img" id="b-hr" src="" alt="HRPro" style="height:100%;object-fit:cover;object-position:top">
-        <div class="banner-side-fade" style="background:linear-gradient(to right,transparent 50%,#0a1410 100%)"></div>
-        <button class="view-all-btn" onclick="event.stopPropagation();openLB('hr',0)">View All Screenshots →</button>
-      </div>
-      <div class="pcard-info">
-        <div class="card-tags"><span class="ctag cr">Full-Stack SaaS</span><span class="ctag ca2">AI-Powered</span></div>
-        <div class="pnum">01 · FEATURED</div>
-        <div class="pname">HRPro</div>
-        <div class="pfor">AI-Powered HR Management System</div>
-        <p class="pdesc">Full-stack, multi-tenant SaaS platform for end-to-end hiring & HR — job postings, AI candidate skill-gap analysis, AI-generated proctored assessments with anti-cheat monitoring, interview scheduling, AI-generated offer letters with email accept/decline flows, employee records, and payroll, all behind role-based auth.</p>
-        <div class="tpills"><span class="tp">Python</span><span class="tp">FastAPI</span><span class="tp">PostgreSQL</span><span class="tp">JWT Auth</span><span class="tp">Groq AI</span><span class="tp">Gmail API</span><span class="tp">JavaScript</span></div>
-        <button class="arrow-btn" onclick="openLB('hr',0)">View All Screenshots →</button>
-      </div>
+      <div class="pcard pcard-feat rv">
+      <div class="pgrid">
+  <div class="pcard pcard-sm rv">
+    <div class="pcard-banner" onclick="openLB('ka',0)">
+      <img class="banner-img" id="b-ka" src="" alt="Ku-Apparel">
+      <div class="banner-fade"></div>
+      <button class="view-all-btn" onclick="event.stopPropagation();openLB('ka',0)">View All Screenshots →</button>
     </div>
-    <div class="pcard pcard-feat rv">
-      <div class="pcard-banner" style="min-height:460px" onclick="openLB('ka',0)">
-        <img class="banner-img" id="b-ka" src="" alt="Ku-Apparel" style="height:100%;object-fit:cover;object-position:top">
-        <div class="banner-side-fade"></div>
-        <button class="view-all-btn" onclick="event.stopPropagation();openLB('ka',0)">View All Screenshots →</button>
-      </div>
-      <div class="pcard-info">
-        <div class="card-tags"><span class="ctag ce">E-commerce</span><span class="ctag cw">WordPress</span></div>
-        <div class="pnum">02</div>
-        <div class="pname">Ku-Apparel</div>
-        <div class="pfor">Fashion E-commerce · WooCommerce</div>
-        <p class="pdesc">Full WooCommerce fashion store with home, shop, product listings, order tracking, and contact pages. E-commerce SEO, payment gateways, and performance optimization throughout.</p>
-        <div class="tpills"><span class="tp">WordPress</span><span class="tp">WooCommerce</span><span class="tp">Elementor</span><span class="tp">E-commerce SEO</span><span class="tp">Payment Gateway</span><span class="tp">Order Tracking</span></div>
-        <button class="arrow-btn" onclick="openLB('ka',0)">View All Screenshots →</button>
-      </div>
-    </div>
-    <div class="pgrid">
-      <div class="pcard pcard-sm rv d1">
-        <div class="pcard-banner" onclick="openLB('ns',0)">
-          <img class="banner-img" id="b-ns" src="" alt="NS-Holding">
-          <div class="banner-fade"></div>
-          <button class="view-all-btn" onclick="event.stopPropagation();openLB('ns',0)">View All Screenshots →</button>
-        </div>
-        <div class="pcard-info">
-          <div class="card-tags"><span class="ctag ca2">AI Company</span><span class="ctag cw">WordPress</span></div>
-          <div class="pnum">03</div>
-          <div class="pname">NS-Holding</div>
-          <div class="pfor">AI & Security Solutions · 5 Pages</div>
-          <p class="pdesc">Corporate multi-page site for an international AI & security company with offices across 8 countries.</p>
-          <div class="tpills"><span class="tp">WordPress</span><span class="tp">Elementor</span><span class="tp">Corporate</span><span class="tp">Multi-page</span></div>
-          <button class="arrow-btn" onclick="openLB('ns',0)">View All Screenshots →</button>
-        </div>
-      </div>
-      <div class="pcard pcard-sm rv d2">
-        <div class="pcard-banner" onclick="openLB('ca',0)">
-          <img class="banner-img" id="b-ca" src="" alt="Codearva">
-          <div class="banner-fade"></div>
-          <button class="view-all-btn" onclick="event.stopPropagation();openLB('ca',0)">View All Screenshots →</button>
-        </div>
-        <div class="pcard-info">
-          <div class="card-tags"><span class="ctag cd">Digital Agency</span><span class="ctag cw">WordPress</span></div>
-          <div class="pnum">04</div>
-          <div class="pname">Codearva Solutions</div>
-          <div class="pfor">Digital Marketing Agency · 5 Pages</div>
-          <p class="pdesc">Full agency website with services, pricing tables, meeting booking, FAQ, and client reviews. Bold yellow-black brand identity.</p>
-          <div class="tpills"><span class="tp">WordPress</span><span class="tp">Elementor</span><span class="tp">Booking System</span><span class="tp">Pricing Tables</span></div>
-          <button class="arrow-btn" onclick="openLB('ca',0)">View All Screenshots →</button>
-        </div>
-      </div>
-    </div>
-    <div class="pcard pcard-feat rv" style="background:linear-gradient(135deg,#0a0814,#080811);border-color:rgba(139,92,246,.22)">
-      <div class="pcard-banner" style="background:#07071a;min-height:420px" onclick="openLB('ic',0)">
-        <img class="banner-img" id="b-ic" src="" alt="IntelliCampus" style="height:100%;object-fit:cover;object-position:top">
-        <div class="banner-side-fade" style="background:linear-gradient(to right,transparent 50%,#0a0814 100%)"></div>
-        <button class="view-all-btn" onclick="event.stopPropagation();openLB('ic',0)">View All Screenshots →</button>
-      </div>
-      <div class="pcard-info">
-        <div class="card-tags"><span class="ctag ca2">AI / FYP</span><span class="ctag cr">RAG Pipeline</span><span class="ctag" style="background:rgba(212,255,71,.08);color:var(--accent);border:1px solid rgba(212,255,71,.18);font-size:.65rem;font-weight:600;padding:.25rem .75rem;border-radius:100px;letter-spacing:.06em;text-transform:uppercase">Python</span></div>
-        <div class="pnum">05 · FINAL YEAR PROJECT</div>
-        <div class="pname" style="font-size:1.5rem">IntelliCampus</div>
-        <div class="pfor" style="color:#a78bfa">PAF-IAST AI University Assistant</div>
-        <p class="pdesc">AI chatbot using RAG, FAISS, LangChain & Llama-4 via Groq. Provides hallucination-free answers from official PAF-IAST documents. Privacy-first, 4–6s response time. Supervised by Dr. Rashid Naseem.</p>
-        <div class="tpills"><span class="tp">Python</span><span class="tp">Flask</span><span class="tp">RAG</span><span class="tp">FAISS</span><span class="tp">LangChain</span><span class="tp">Llama-4</span><span class="tp">Hugging Face</span><span class="tp">Groq</span></div>
-        <button class="arrow-btn" onclick="openLB('ic',0)" style="color:#a78bfa">View All Screenshots →</button>
-      </div>
+    <div class="pcard-info">
+      <div class="card-tags"><span class="ctag ce">E-commerce</span><span class="ctag cw">WordPress</span></div>
+      <div class="pnum">01 · FEATURED</div>
+      <div class="pname">Ku-Apparel</div>
+      <div class="pfor">Fashion E-commerce · WooCommerce</div>
+      <p class="pdesc">Full WooCommerce fashion store with home, shop, product listings, order tracking, and contact pages. E-commerce SEO and payment gateways throughout.</p>
+      <div class="tpills"><span class="tp">WordPress</span><span class="tp">WooCommerce</span><span class="tp">Elementor</span><span class="tp">E-commerce SEO</span></div>
+      <button class="arrow-btn" onclick="openLB('ka',0)">View All Screenshots →</button>
     </div>
   </div>
-
-  <!-- FULL-STACK / SAAS -->
-  <div class="proj-group" id="g-saas">
-    <p class="group-title">Full-Stack / SaaS Projects</p>
-    <div class="pcard pcard-feat rv" style="background:linear-gradient(135deg,#0a1410,#08110e);border-color:rgba(34,211,238,.22)">
-      <div class="pcard-banner" style="background:#061210;min-height:420px" onclick="openLB('hr',0)"><img class="banner-img" src="" data-src="hr_signup" alt="HRPro" style="height:100%;object-fit:cover;object-position:top"><div class="banner-side-fade" style="background:linear-gradient(to right,transparent 50%,#0a1410 100%)"></div><button class="view-all-btn" onclick="event.stopPropagation();openLB('hr',0)">View All Screenshots →</button></div>
-      <div class="pcard-info"><div class="card-tags"><span class="ctag cr">SaaS</span><span class="ctag ca2">AI-Powered</span></div><div class="pnum">FEATURED</div><div class="pname">HRPro</div><div class="pfor">AI-Powered HR Management System</div><p class="pdesc">Multi-tenant hiring & HR platform: job postings, AI skill-gap analysis, proctored AI assessments with anti-cheat, interview scheduling, AI offer letters with email accept/decline, employees & payroll.</p><div class="tpills"><span class="tp">FastAPI</span><span class="tp">PostgreSQL</span><span class="tp">JWT</span><span class="tp">Groq AI</span><span class="tp">Gmail API</span></div><button class="arrow-btn" onclick="openLB('hr',0)">View All Screenshots →</button></div>
+  <div class="pcard pcard-sm rv d1">
+    <div class="pcard-banner" onclick="openLB('ns',0)">
+      <img class="banner-img" id="b-ns" src="" alt="NS-Holding">
+      <div class="banner-fade"></div>
+      <button class="view-all-btn" onclick="event.stopPropagation();openLB('ns',0)">View All Screenshots →</button>
+    </div>
+    <div class="pcard-info">
+      <div class="card-tags"><span class="ctag ca2">AI Company</span><span class="ctag cw">WordPress</span></div>
+      <div class="pnum">02</div>
+      <div class="pname">NS-Holding</div>
+      <div class="pfor">AI & Security Solutions · 5 Pages</div>
+      <p class="pdesc">Corporate multi-page site for an international AI & security company with offices across 8 countries.</p>
+      <div class="tpills"><span class="tp">WordPress</span><span class="tp">Elementor</span><span class="tp">Corporate</span><span class="tp">Multi-page</span></div>
+      <button class="arrow-btn" onclick="openLB('ns',0)">View All Screenshots →</button>
     </div>
   </div>
+  <div class="pcard pcard-sm rv d2">
+    <div class="pcard-banner" onclick="openLB('ca',0)">
+      <img class="banner-img" id="b-ca" src="" alt="Codearva">
+      <div class="banner-fade"></div>
+      <button class="view-all-btn" onclick="event.stopPropagation();openLB('ca',0)">View All Screenshots →</button>
+    </div>
+    <div class="pcard-info">
+      <div class="card-tags"><span class="ctag cd">Digital Agency</span><span class="ctag cw">WordPress</span></div>
+      <div class="pnum">03</div>
+      <div class="pname">Codearva Solutions</div>
+      <div class="pfor">Digital Marketing Agency · 5 Pages</div>
+      <p class="pdesc">Full agency website with services, pricing tables, meeting booking, FAQ, and client reviews. Bold yellow-black brand identity.</p>
+      <div class="tpills"><span class="tp">WordPress</span><span class="tp">Elementor</span><span class="tp">Booking System</span><span class="tp">Pricing Tables</span></div>
+      <button class="arrow-btn" onclick="openLB('ca',0)">View All Screenshots →</button>
+    </div>
+  </div>
+  <div class="pcard pcard-sm rv d3" style="background:linear-gradient(135deg,#0a0814,#080811);border-color:rgba(139,92,246,.22)">
+    <div class="pcard-banner" style="background:#07071a" onclick="openLB('ic',0)">
+      <img class="banner-img" id="b-ic" src="" alt="IntelliCampus">
+      <div class="banner-fade" style="background:linear-gradient(to top,#0a0814,transparent)"></div>
+      <button class="view-all-btn" onclick="event.stopPropagation();openLB('ic',0)">View All Screenshots →</button>
+    </div>
+    <div class="pcard-info">
+      <div class="card-tags"><span class="ctag ca2">AI / FYP</span><span class="ctag cr">RAG Pipeline</span></div>
+      <div class="pnum">04 · FINAL YEAR PROJECT</div>
+      <div class="pname">IntelliCampus</div>
+      <div class="pfor" style="color:#a78bfa">PAF-IAST AI University Assistant</div>
+      <p class="pdesc">AI chatbot using RAG, FAISS, LangChain & Llama-4 via Groq. Hallucination-free answers from official PAF-IAST documents. Supervised by Dr. Rashid Naseem.</p>
+      <div class="tpills"><span class="tp">Python</span><span class="tp">Flask</span><span class="tp">RAG</span><span class="tp">FAISS</span><span class="tp">LangChain</span><span class="tp">Llama-4</span></div>
+      <button class="arrow-btn" onclick="openLB('ic',0)" style="color:#a78bfa">View All Screenshots →</button>
+    </div>
+  </div>
+  <div class="pcard pcard-sm rv d3" style="background:linear-gradient(135deg,#070b14,#080f1a);border-color:rgba(99,179,237,.2)">
+    <div class="pcard-banner" style="background:#060c18" onclick="openLB('hp',0)">
+      <img class="banner-img" id="b-hp" src="" alt="HRPro">
+      <div class="banner-fade" style="background:linear-gradient(to top,#070b14,transparent)"></div>
+      <button class="view-all-btn" onclick="event.stopPropagation();openLB('hp',0)">View All Screenshots →</button>
+    </div>
+    <div class="pcard-info">
+      <div class="card-tags"><span class="ctag cr">Full Stack</span><span class="ctag ca2">AI-Powered</span></div>
+      <div class="pnum">05</div>
+      <div class="pname">HRPro</div>
+      <div class="pfor" style="color:#63b3ed">HR Management System · 20 Screens</div>
+      <p class="pdesc">Full-featured HR Management System with AI-powered job postings, smart candidate filtering, anti-cheat assessments, interview scheduling, offer letter generation & payroll management.</p>
+      <div class="tpills"><span class="tp">HTML</span><span class="tp">CSS</span><span class="tp">JavaScript</span><span class="tp">Supabase</span><span class="tp">AI Integration</span><span class="tp">Jitsi</span></div>
+      <button class="arrow-btn" onclick="openLB('hp',0)" style="color:#63b3ed">View All Screenshots →</button>
+    </div>
+  </div>
+</div>
 
   <!-- WORDPRESS -->
   <div class="proj-group" id="g-wordpress">
@@ -536,6 +628,15 @@ footer{padding:1.8rem 3rem;border-top:1px solid var(--border);display:flex;align
   <!-- SOCIAL -->
   <div class="proj-group" id="g-social">
     <div class="empty-skill"><strong>Social Media Management</strong>Campaign work & results from Awtech Solutions internship will be added here.</div>
+  </div>
+
+  <!-- FULL STACK -->
+  <div class="proj-group" id="g-fullstack">
+    <p class="group-title">Full Stack Projects</p>
+    <div class="pcard pcard-feat rv" style="background:linear-gradient(135deg,#070b14,#080f1a);border-color:rgba(99,179,237,.2)">
+      <div class="pcard-banner" style="background:#060c18;min-height:420px" onclick="openLB('hp',0)"><img class="banner-img" src="" data-src="hp_dashboard" alt="HRPro" style="height:100%;object-fit:cover;object-position:top"><div class="banner-side-fade" style="background:linear-gradient(to right,transparent 50%,#070b14 100%)"></div><button class="view-all-btn" onclick="event.stopPropagation();openLB('hp',0)">View All Screenshots →</button></div>
+      <div class="pcard-info"><div class="card-tags"><span class="ctag cr">Full Stack</span><span class="ctag ca2">AI-Powered</span></div><div class="pnum">PROJECT 05</div><div class="pname" style="font-size:1.5rem">HRPro</div><div class="pfor" style="color:#63b3ed">HR Management System · 20 Screens</div><p class="pdesc">Complete HR Management System deployed on Vercel. Features AI-generated job postings, smart candidate skill-gap analysis, anti-cheat assessments with camera proctoring, Jitsi video interviews, AI offer letter generation, employee management & payroll.</p><div class="tpills"><span class="tp">HTML</span><span class="tp">CSS</span><span class="tp">JavaScript</span><span class="tp">Supabase</span><span class="tp">AI Integration</span><span class="tp">Jitsi API</span><span class="tp">Vercel</span></div><a href="https://hr-management-system-nine.vercel.app" target="_blank" class="arrow-btn" style="color:#63b3ed">Visit Live Site →</a></div>
+    </div>
   </div>
 </div>
 </section>
@@ -671,11 +772,11 @@ footer{padding:1.8rem 3rem;border-top:1px solid var(--border);display:flex;align
 document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('img-profile').src  = IMAGES.profile;
   document.getElementById('img-about').src    = IMAGES.profile;
-  document.getElementById('b-ka').src         = IMAGES.ka_Hello;
+  document.getElementById('b-ka').src         = IMAGES.ka_hello;
   document.getElementById('b-ns').src         = IMAGES.ns_about;
   document.getElementById('b-ca').src         = IMAGES.ca_home;
   document.getElementById('b-ic').src         = IMAGES.ic_landing;
-  document.getElementById('b-hr').src         = IMAGES.02-login.jpg;
+  document.getElementById('b-hp').src         = IMAGES.hp_dashboard;
   // Fill data-src images (duplicates in skill tabs)
   document.querySelectorAll('img[data-src]').forEach(img => {
     img.src = IMAGES[img.dataset.src];
@@ -721,28 +822,50 @@ function getLBData() {
         'Live AI Chat — University questions answered instantly with RAG + Llama-4'
       ]
     },
-    hr: {
-      imgs: [IMAGES.hr_signup, IMAGES.hr_login, IMAGES.hr_dashboard, IMAGES.hr_jobpost, IMAGES.hr_viewjob, IMAGES.hr_apply, IMAGES.hr_skillgap, IMAGES.hr_aiassess, IMAGES.hr_assessdash, IMAGES.hr_assessstart, IMAGES.hr_anticheat, IMAGES.hr_results, IMAGES.hr_schedule, IMAGES.hr_interviews, IMAGES.hr_offergen, IMAGES.hr_offeremail, IMAGES.hr_offeraccept, IMAGES.hr_employees, IMAGES.hr_payroll],
+    hp: {
+      imgs: [
+        IMAGES.hp_login,
+        IMAGES.hp_signup,
+        IMAGES.hp_dashboard,
+        IMAGES.hp_job_posting_dashboard,
+        IMAGES.hp_job_posting,
+        IMAGES.hp_view_job,
+        IMAGES.hp_job_application_form,
+        IMAGES.hp_view_applications,
+        IMAGES.hp_view_single_application,
+        IMAGES.hp_create_assessment,
+        IMAGES.hp_assessment_dashboard,
+        IMAGES.hp_assessment_startup,
+        IMAGES.hp_assessment_anticheat,
+        IMAGES.hp_assessment_results,
+        IMAGES.hp_schedule_interview,
+        IMAGES.hp_generate_offer,
+        IMAGES.hp_offer_email,
+        IMAGES.hp_offer_acceptance,
+        IMAGES.hp_add_employee,
+        IMAGES.hp_payroll
+      ],
       caps: [
-        'Sign Up — Create an HR Management account in seconds',
-        'Login — Secure, role-based sign-in for HR admins',
-        'Dashboard — Live overview of jobs, applications, interviews & hires',
-        'Job Posting — Create a new role with salary range, CGPA & experience requirements',
-        'View Job — Full posting detail with shareable public apply link',
-        'Public Application Form — Candidate-facing apply page with resume upload',
-        'AI Skill-Gap Analysis — Matches candidate skills vs. job requirements automatically',
-        'Create Assessment with AI — Auto-generates MCQ & practical questions by difficulty',
-        'Assessments Dashboard — Manage tests, difficulty mix, marks & anti-cheat settings',
-        'Assessment Start Screen — Rules, camera/mic verification before candidates begin',
-        'Anti-Cheat Monitoring — Auto-submits on tab-switch or face/voice detection issues',
-        'Assessment Results — AI-graded score, grade & personalized feedback per candidate',
-        'Schedule Interview — Auto-generates a Jitsi meeting link for online interviews',
-        'Interviews Dashboard — Track upcoming, past & all scheduled interviews',
-        'Generate Offer Letter — AI-drafted offer letter from role, salary & benefits',
-        'Offer Email — Candidate receives an offer with one-click Accept/Decline links',
-        'Offer Accepted — Branded confirmation page after candidate accepts',
-        'Employees — Full employee directory with department, salary & status',
-        'Payroll Management — Generate and track monthly payslips by department'
+        'Login — Secure sign-in with feature highlights: AI Job Forms, Smart Filtering, Assessments, Scheduling, Payroll & Offer Letters',
+        'Sign Up — HR account creation with role, department & company location',
+        'Dashboard — Overview of total jobs, applications, pending reviews, hired, rejected, employees, upcoming interviews & shortlisted',
+        'Job Postings Dashboard — Manage all job openings with status, skill tags, application count & shareable apply link',
+        'Create Job Posting — Full form with title, department, type, location, experience, CGPA, salary range, deadline & status',
+        'View Job Details — Full job detail modal with description, requirements, salary range, status & copyable apply link',
+        'Public Job Application Form — Branded candidate-facing form with job overview, required skills, application details & CV upload',
+        'Applications Dashboard — Filter & review all applicants by name, status, experience, CGPA with AI skill-match percentage',
+        'Single Application View — AI Skill Gap Analysis with match %, matching & missing skills, AI feedback, and action buttons (shortlist, schedule, offer, reject)',
+        'Create Assessment by AI — AI-generated assessments with configurable easy/moderate/hard/practical question counts & anti-cheat toggle',
+        'Assessment Dashboard — Active assessments with question breakdown, attempt count, anti-cheat badge & shareable link',
+        'Assessment Startup Screen — Candidate-facing start screen with rules, camera & mic verification, and proctoring setup',
+        'Anti-Cheat Functionality — Auto-submission triggered on window switch with score, grade & AI-generated feedback shown to candidate',
+        'Assessment Results — HR view of all candidate results: score, percentage, grade, status, submission method & time taken',
+        'Schedule Interview — Modal to schedule online (Jitsi auto-link) or in-person interviews with date, time & duration',
+        'Generate / Write Offer Letter — Form to create AI-generated or manually written offer letters with salary, joining date, benefits & job type',
+        'Offer Letter Email — Actual email sent to candidate with accept/decline links, signing fields & joining date',
+        'Offer Acceptance — Candidate-facing acceptance confirmation page with welcome message & next-steps email notification',
+        'Add Employee — Employee onboarding form capturing name, email, phone, department, position, salary, bank & joining date',
+        'Payroll Management — Department-filtered payroll view with employee salary, bank info, month status & bulk generate option'
       ]
     }
   };
