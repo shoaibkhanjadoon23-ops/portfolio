@@ -23,10 +23,12 @@ const IMAGES = {
   ka_shop:        "images/ku-apparel/shop.jpg",
   ka_track:       "images/ku-apparel/track.jpg",
   ka_contact:     "images/ku-apparel/contact.jpg",
+  ka_hello:       "images/ku-apparel/hello.png",
 
   // IntelliCampus AI Chatbot
   ic_landing:     "images/intellicampus/landing.jpg",
   ic_chat:        "images/intellicampus/chat.jpg",
+  ic_screen:      "images/intellicampus/Screen.png",
 
   // NS-Holding Corporate Website
   ns_home:        "images/ns-holding/home.jpg",
@@ -669,11 +671,11 @@ footer{padding:1.8rem 3rem;border-top:1px solid var(--border);display:flex;align
 document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('img-profile').src  = IMAGES.profile;
   document.getElementById('img-about').src    = IMAGES.profile;
-  document.getElementById('b-ka').src         = IMAGES.ka_home;
-  document.getElementById('b-ns').src         = IMAGES.ns_home;
+  document.getElementById('b-ka').src         = IMAGES.ka_hello;
+  document.getElementById('b-ns').src         = IMAGES.ns_about;
   document.getElementById('b-ca').src         = IMAGES.ca_home;
   document.getElementById('b-ic').src         = IMAGES.ic_landing;
-  document.getElementById('b-hr').src         = IMAGES.hr_signup;
+  document.getElementById('b-hr').src         = IMAGES.hr_login;
   // Fill data-src images (duplicates in skill tabs)
   document.querySelectorAll('img[data-src]').forEach(img => {
     img.src = IMAGES[img.dataset.src];
